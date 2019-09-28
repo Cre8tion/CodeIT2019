@@ -30,32 +30,46 @@ def exponent():
         length = p * math.log10(n)
         frac, whole = math.modf(length)
         fd = int(str(10 ** frac)[0])
+        print(fd)
         length = int(math.ceil(length))
+        print(length)
 
         num = str(n)
+        ld = int(num[len(num)-1])
 
-        #
-        #exp = str(n ** p)
-        #logging.info("val " + exp)
-        #
-        #fd = int(exp[0])
-        #length = len(str(exp))
-        
-        #lst = [int(x) for x in str(num)] 
-
-        #mod = Modulo(4, lst)
-
-        #if((mod == 0)) : 
-        #    exp_end = 4
-        #else :  
-        #    exp_end = mod
-        
-        # Find last digit in 'a' and compute its exponent 
-        #print(num)
-        res = int(num[len(num)-1])**p
-        ldigit = int(res % 10) 
-
-        #ld = int(exp[-1])
+        if(ld == 1):
+            ldigit = 1
+        elif(ld == 2):
+            remainder = p % 4
+            arr = [2,4,6,8]
+            ldigit = arr[remainder - 1]
+        elif(ld == 3):
+            remainder = p % 4
+            arr = [3,9,7,1]
+            ldigit = arr[remainder - 1]
+        elif(ld == 4):
+            remainder = p % 4
+            arr = [4,6,4,6]
+            ldigit = arr[remainder - 1]
+        elif(ld == 5):
+            ldigit = 5
+        elif(ld == 6):
+            ldigit = 6
+        elif(ld == 7):
+            remainder = p % 4
+            arr = [7,9,3,1]
+            ldigit = arr[remainder - 1]
+        elif(ld == 8):
+            remainder = p % 4
+            arr = [8,4,2,6]
+            ldigit = arr[remainder - 1]
+        elif(ld == 9):
+            remainder = p % 4
+            arr = [9,1,9,1]
+            ldigit = arr[remainder - 1]
+        #res = ld**p
+        #ldigit = int(res % 10)
+        print(ldigit) 
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
