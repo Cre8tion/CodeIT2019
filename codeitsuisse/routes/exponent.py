@@ -18,6 +18,10 @@ def exponent():
         fd = 1
         length = p + 1
         ldigit = 0
+    elif(p == 0):
+        fd = 1
+        length = 1
+        ldigit = 1
     else:
         length = p * math.log10(n)
         fd = int(str(10 ** length)[0])
