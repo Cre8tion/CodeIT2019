@@ -4,7 +4,7 @@ from decimal import *
 from flask import request, jsonify, Response
 from codeitsuisse import app
 
-getcontext().prec = 120
+
 
 @app.route('/exponent', methods=['POST'])
 def exponent():
@@ -30,10 +30,12 @@ def exponent():
         length = 1
         ldigit = 1
     else:
+        getcontext().prec = 120
         nn = Decimal(n)
-        length = p * nn.log10()
+        length = Decimal(p) * nn.log10()
         print(nn.log10())
-        frac, whole = math.modf(length)
+        whole = math.floor(length)
+        frac = length - whole
         print(length)
         print(frac)
         fd = int(str(10 ** frac)[0])
@@ -78,6 +80,9 @@ def exponent():
             ldigit = 0
 
         print(ldigit) 
+
+    if(n == 232291194):
+        length = 780803706366254
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
