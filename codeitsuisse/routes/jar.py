@@ -24,7 +24,7 @@ def ready():
 	    elif(num > total):
 	        count = 1
 	    else:
-		    while(len(lst) > 0 and total - lst[-1] > limit):
+		    while(len(lst) > 1 and total - lst[-1] > limit):
 		    	turn+=1
 		    	total = total - lst[-1]
 		    	lst.pop(-1)
@@ -32,7 +32,7 @@ def ready():
 		    	print(turn)
 		    	print(total)
 		    	print(lst)
-		    if (len(lst) == 0 and total > 0):
+		    if (len(lst) == 1 and total > 1):
 		    	count = -1
 		    else:
 		    	count = turn + 2
