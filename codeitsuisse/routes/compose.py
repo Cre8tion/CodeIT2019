@@ -23,7 +23,7 @@ def compose():
     val = split(string,0)
 
     res = {"testId":f"{_id}","result":f"{val}"}
-    logging.info("My result :{}".format(result))
+    logging.info("My result :{}".format(res))
     return json.dumps(res)
 
 
