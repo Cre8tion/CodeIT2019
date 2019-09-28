@@ -3,7 +3,7 @@ from random import randint
 from flask import request, jsonify
 from codeitsuisse import app
 
-@app.route('/lottery', methods=['POST'])
+@app.route('/lottery', methods=['GET'])
 def lottery():
     lst = []
     for i in range(10):
