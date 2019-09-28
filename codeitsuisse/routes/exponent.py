@@ -4,7 +4,7 @@ from decimal import *
 from flask import request, jsonify, Response
 from codeitsuisse import app
 
-getcontext().prec = 50
+getcontext().prec = 120
 
 @app.route('/exponent', methods=['POST'])
 def exponent():
