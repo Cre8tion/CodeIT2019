@@ -21,37 +21,26 @@ def chess():
             if "K" in board[i][j]:
                 queen = [i, j]
 
-    row = queen[0]
-    col = queen[1]
-
-    def reset():
-        nonlocal row, col
-        row = queen[0]
-        col = queen[1]
-
     def direction(i: int, j: int):
-        nonlocal row, col, squares
-        while row >= 0 and row < nrow and col >= 0 and col < ncol:
-            row += i
-            col += j
+        nonlocal squares 
+        stepRow = queen[0]
+        stepCol = queen[1]
+        while True:
+            stepRow = row + i
+            stepCol = col + j
+            if stepRow >= 0 and stepRow < nrow and stepCol >= 0 and stepCol < ncol:
+                break
             if board[row][col] == "X":
                 break
             squares += 1
     
     direction(-1, 0)
-    reset()
     direction(-1, -1)
-    reset()
     direction(0, -1)
-    reset()
     direction(1, -1)
-    reset()
     direction(1, 0)
-    reset()
     direction(1, 1)
-    reset()
     direction(0, 1)
-    reset()
     direction(-1, 1)
     
     #inputValue = data.get("input");
