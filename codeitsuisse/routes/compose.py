@@ -20,7 +20,10 @@ def compose():
     for i in range(length):
     	patterns.append(patterns[i][1]+patterns[i][0])
 
-    val = split(string,0)
+    if (any(ele in string for ele in patterns)) == False:    
+    	val = 0
+    else:
+    	val = split(string,0)
 
     res = {"testId":f"{_id}","result":f"{val}"}
     logging.info("My result :{}".format(res))
