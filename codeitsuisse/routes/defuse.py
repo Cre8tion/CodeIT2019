@@ -10,15 +10,16 @@ from codeitsuisse import app
 @app.route('/defuse', methods=['POST'])
 def defuse():
     data = request.get_json()
-    logging.info("data sent for evaluation {}".format(data[1]))
+    logging.info("full data {}".format(data))
 
     def defusal(idx: int) -> int:
         nonlocal data
+        print(idx)
         print(data[idx])
         length = data[idx]["n"]
 
         if length < 3:
-            return 0
+            return 0 % 998244353
 
         array = data[idx]["password"]
 
@@ -57,12 +58,8 @@ def defuse():
         print(palindromes)
         freeSpots = []
 
-        logging.info("freeSpots {}".format(freeSpots))
-
         for key in palindromes:
             for end in range(len(palindromes[key])):
-                print("key {}".format(key))
-                print("end {}".format(palindromes[key][end]))
                 freeSpots.append(checkVariablePos(key, palindromes[key][end]))
 
         total = 0
@@ -72,9 +69,9 @@ def defuse():
         for m in range(len(freeSpots)):
             total += k ** freeSpots[m]
         print(total)
-        logging.info("total {}".format(total))
+        print("total {}".format(total))
 
-        return total
+        return total % 998244353
     
     answers = []
     for k in range(len(data)):
