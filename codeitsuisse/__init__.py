@@ -6,3 +6,4 @@ import codeitsuisse.routes.jar
 import codeitsuisse.routes.dependency
 import codeitsuisse.routes.chess
 import codeitsuisse.routes.lottery
+import codeitsuisse.routes.defuse
