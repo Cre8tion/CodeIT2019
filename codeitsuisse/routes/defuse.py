@@ -26,6 +26,8 @@ def defuse():
         def checkPalindrome(start: int, end: int) -> bool:
             for i in range(start, (start + end) // 2):
                 if array[i] != array[end - i + start]:
+                    if array[i] == -1 or array[end - i + start] == -1:
+                        continue
                     return False
             return True
 
