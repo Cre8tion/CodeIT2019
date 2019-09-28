@@ -17,6 +17,7 @@ def defuse():
         print(idx)
         print(data[idx])
         length = data[idx]["n"]
+        k = data[idx]['k']
 
         if length < 3:
             return 0 % 998244353
@@ -26,7 +27,7 @@ def defuse():
         def checkPalindrome(start: int, end: int) -> bool:
             for i in range(start, (start + end) // 2):
                 if array[i] != array[end - i + start]:
-                    if array[i] == -1 or array[end - i + start] == -1:
+                    if array[i] == -1 or array[end - i + start] == -1 and array[i] <= k and array[end - i + start] <= k:
                         continue
                     return False
             return True
@@ -67,7 +68,6 @@ def defuse():
                 freeSpots.append(checkVariablePos(key, palindromes[key][end]))
 
         total = 0
-        k = data[idx]['k']
 
         print(freeSpots)
         for m in range(len(freeSpots)):
