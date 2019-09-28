@@ -11,31 +11,29 @@ def exponent():
     p = data['p']
 
     length = p * math.log10(n)
+    fd = int(str(10 ** length)[0])
     length = int(math.ceil(length))
 
     num = str(n)
-    first = num[0]
-    val = int(first)**p
-    final_num = str(val)
-    fd = int(final_num[0])
+
     #
     #exp = str(n ** p)
     #logging.info("val " + exp)
     #
     #fd = int(exp[0])
     #length = len(str(exp))
+    
+    #lst = [int(x) for x in str(num)] 
 
-    lst = [int(x) for x in str(num)] 
+    #mod = Modulo(4, lst)
 
-    mod = Modulo(4, lst)
-
-    if((mod == 0)) : 
-        exp_end = 4
-    else :  
-        exp_end = mod
-  
+    #if((mod == 0)) : 
+    #    exp_end = 4
+    #else :  
+    #    exp_end = mod
+    
     # Find last digit in 'a' and compute its exponent 
-    print(num)
+    #print(num)
     res = int(num[len(num)-1])**p
     ldigit = int(res % 10) 
 
