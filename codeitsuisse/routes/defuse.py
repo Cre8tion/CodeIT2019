@@ -7,7 +7,7 @@ from codeitsuisse import app
 def defuse():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-    length = data['n']
+    length = data.get("n")
 
     if length < 3:
         return json.dumps(0)
