@@ -14,6 +14,10 @@ def exponent():
         fd = 0
         length = 1
         ldigit = 0
+    elif(n == 10):
+        fd = 1
+        length = p + 1
+        ldigit = 0
     else:
         length = p * math.log10(n)
         fd = int(str(10 ** length)[0])
