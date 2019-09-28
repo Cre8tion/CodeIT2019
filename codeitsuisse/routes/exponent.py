@@ -6,6 +6,7 @@ from codeitsuisse import app
 @app.route('/exponent', methods=['POST'])
 def exponent():
     data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
     n = data['n']
     p = data['p']
 
@@ -41,6 +42,7 @@ def exponent():
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
+    logging.info("My result :{}".format(result))
     return Response(json.dumps(result), mimetype='application/json')
 
 
