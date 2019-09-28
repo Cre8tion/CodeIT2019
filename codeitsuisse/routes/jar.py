@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 def ready():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    num = data.get("maxChoosableInteger")
-    total = data.get("desiredTotal")
+    num = int(data.get("maxChoosableInteger"))
+    total = int(data.get("desiredTotal"))
     if(num == 1):
     	count = -1
     else:
@@ -38,7 +38,7 @@ def ready():
 		    	count = turn + 2
     if(count % 2 == 0):
         count = -1
-    result = {"res":count}
+    result = {"res":f'{count}'}
 
     logging.info("My result :{}".format(result))
     return json.dumps(result);
