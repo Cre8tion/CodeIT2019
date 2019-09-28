@@ -1,7 +1,7 @@
 import logging
 import json
 
-from flask import request, jsonify;
+from flask import request, jsonify, Response
 
 from codeitsuisse import app;
 
@@ -27,7 +27,8 @@ def compose():
 
     res = {"testId":f"{_id}","result":f"{val}"}
     logging.info("My result :{}".format(res))
-    return json.dumps(res)
+    return Response(json.dumps(res), mimetype='application/json')
+    
 
 
 def split(str,count):
