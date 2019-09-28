@@ -30,15 +30,13 @@ def exponent():
         length = 1
         ldigit = 1
     else:
-        getcontext().prec = 120
-        nn = Decimal(n)
-        length = Decimal(p) * nn.log10()
-        print(nn.log10())
-        whole = math.floor(length)
-        frac = length - whole
-        print(length)
-        print(frac)
-        fd = int(str(10 ** frac)[0])
+        length = int(p * math.log10(n) + 1)
+        #whole = math.floor(length)
+        #frac = length - whole
+        #print(length)
+        #print(frac)
+        frac = (math.log10(n) * p) % 1
+        fd = int(10 ** frac)
         print(fd)
         length = int(math.ceil(length))
         print(length)
@@ -81,8 +79,6 @@ def exponent():
 
         print(ldigit) 
 
-    if(n == 232291194):
-        length = 780803706366254
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
