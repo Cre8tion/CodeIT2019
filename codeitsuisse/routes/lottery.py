@@ -7,8 +7,8 @@ from codeitsuisse import app
 def lottery():
     lst = []
     for i in range(10):
-        lst.append(randint(1,100))
+        lst.append(str(randint(1,100)))
 
     
     logging.info("rand nums {}".format(lst))
-    return(json.dumps(lst))
+    return json.dumps(lst)
