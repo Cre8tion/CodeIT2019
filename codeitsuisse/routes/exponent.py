@@ -41,7 +41,7 @@ def exponent():
             ldigit = 1
         elif(ld == 2):
             remainder = p % 4
-            arr = [2,4,6,8]
+            arr = [2,4,8,6]
             ldigit = arr[remainder - 1]
         elif(ld == 3):
             remainder = p % 4
