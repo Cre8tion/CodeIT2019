@@ -35,7 +35,8 @@ def exponent():
         exp_end = mod
   
     # Find last digit in 'a' and compute its exponent 
-    res = n**exp_end
+    print(num)
+    res = int(num[len(num)-1])**p
     ldigit = int(res % 10) 
 
     #ld = int(exp[-1])
