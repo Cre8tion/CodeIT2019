@@ -6,6 +6,7 @@ from codeitsuisse import app
 @app.route('/defuse', methods=['POST'])
 def defuse():
     data = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
     length = data['n']
 
     if length < 3:
