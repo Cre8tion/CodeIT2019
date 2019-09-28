@@ -29,7 +29,7 @@ def chess():
         while True:
             stepRow = stepRow + i
             stepCol = stepCol + j
-            if stepRow < 0 and stepRow >= nrow and stepCol < 0 and stepCol >= ncol :
+            if stepRow < 0 or stepRow >= nrow or stepCol < 0 or stepCol >= ncol :
                 break
             if board[stepRow][stepCol] == 'X':
                 break
