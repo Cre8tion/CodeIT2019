@@ -14,18 +14,25 @@ def seq():
     
 
     nodes = data["modules"]
-    edges = {}
+    graph = {}
 
     for d in data["dependencyPairs"]:
         start = d['dependentOn']
         end = d['dependee']
-        if start in edges:
-            edges[start] = edges[start].append(end)
+        if start in graph:
+            graph[start].add(end)
         else:
-            edges[start] = [end]
+            graph[start] = set([end])
 
-    logging.info("nodes {}".format(nodes))
-    logging.info("edges {}".format(edges))
-    
+    stack = [nodes[0]]
+    visited = {}
+
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            visited.add(node)
+            
+
+
 
     return json.dumps([])
