@@ -34,13 +34,13 @@ def compose():
 def split(str,count):
 	arr = []
 	count += 1
-	print(str)
+	#print(str)
 	for i in range(len(str)):
 		s = str[0:i] + str[i+1:len(str)]
 		if (any(ele in s for ele in patterns)) == False:
-			print(s)
+			#print(s)
 			return count
 		arr.append(s)
-	print(arr)
+	#print(arr)
 	for i in arr:
 		return split(i,count)
