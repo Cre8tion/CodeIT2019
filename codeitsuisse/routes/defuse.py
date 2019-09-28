@@ -54,7 +54,7 @@ def defuse():
             count = 0
             j = end
             for i in range(start, (start + end) // 2 + 1):
-                if array[i] == -1 or array[j] == -1:
+                if array[i] == -1 and array[j] == -1:
                     count += 1
                 j -= 1
             return count
