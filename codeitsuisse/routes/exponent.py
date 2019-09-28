@@ -67,6 +67,8 @@ def exponent():
             remainder = p % 4
             arr = [9,1,9,1]
             ldigit = arr[remainder - 1]
+        elif(ld == 0):
+            ldigit = 0
         #res = ld**p
         #ldigit = int(res % 10)
         print(ldigit) 
