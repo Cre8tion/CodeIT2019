@@ -8,3 +8,4 @@ import codeitsuisse.routes.chess
 import codeitsuisse.routes.lottery
 import codeitsuisse.routes.defuse
 import codeitsuisse.routes.exponent
+import codeitsuisse.routes.compose
