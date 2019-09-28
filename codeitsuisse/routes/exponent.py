@@ -1,7 +1,10 @@
 import json, logging, math
+from decimal import *
 
 from flask import request, jsonify, Response
 from codeitsuisse import app
+
+getcontext().prec = 50
 
 @app.route('/exponent', methods=['POST'])
 def exponent():
@@ -27,8 +30,12 @@ def exponent():
         length = 1
         ldigit = 1
     else:
-        length = p * math.log10(n)
+        nn = Decimal(n)
+        length = p * nn.log10()
+        print(nn.log10())
         frac, whole = math.modf(length)
+        print(length)
+        print(frac)
         fd = int(str(10 ** frac)[0])
         print(fd)
         length = int(math.ceil(length))
@@ -69,23 +76,11 @@ def exponent():
             ldigit = arr[remainder - 1]
         elif(ld == 0):
             ldigit = 0
-        #res = ld**p
-        #ldigit = int(res % 10)
+
         print(ldigit) 
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
     logging.info("My result :{}".format(result))
     return Response(json.dumps(result), mimetype='application/json')
-
-
-def Modulo(a, b) : 
-    mod = 0
-  
-    # calculating mod of b with a to make 
-    # b like 0 <= b < a 
-    for i in range(0, len(b)) : 
-        mod = (mod * 10 + (int)(b[i])) % a 
-  
-    return mod # return modulo 
            
