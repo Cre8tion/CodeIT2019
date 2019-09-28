@@ -26,11 +26,11 @@ def chess():
         stepRow = queen[0]
         stepCol = queen[1]
         while True:
-            stepRow = row + i
-            stepCol = col + j
+            stepRow = stepRow + i
+            stepCol = stepCol + j
             if stepRow >= 0 and stepRow < nrow and stepCol >= 0 and stepCol < ncol:
                 break
-            if board[row][col] == "X":
+            if board[stepRow][stepCol] == "X":
                 break
             squares += 1
     
