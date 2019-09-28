@@ -34,6 +34,8 @@ def ready():
 		    	print(lst)
 		    if (len(lst) == 1 and total > 1):
 		    	count = -1
+		    elif(total - lst[-1]==limit):
+		    	count = turn + 4
 		    else:
 		    	count = turn + 2
     if(count % 2 == 0):
