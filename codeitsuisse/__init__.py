@@ -4,6 +4,7 @@ import codeitsuisse.routes.square
 import codeitsuisse.routes.wedding
 import codeitsuisse.routes.jar
 import codeitsuisse.routes.dependency
+import codeitsuisse.routes.chess
 
 
 
