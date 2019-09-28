@@ -28,7 +28,8 @@ def exponent():
         ldigit = 1
     else:
         length = p * math.log10(n)
-        fd = int(str(10 ** length)[0])
+        frac, whole = math.modf(length)
+        fd = int(str(10 ** frac)[0])
         length = int(math.ceil(length))
 
         num = str(n)
