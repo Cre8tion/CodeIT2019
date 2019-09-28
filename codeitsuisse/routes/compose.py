@@ -9,8 +9,9 @@ logger = logging.getLogger(__name__)
 
 @app.route('/composition', methods=['POST'])
 def compose():
-    data = request.get_json();
+    data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
+    global patterns
     _id = data.get("setId")
     string = data.get("composition")
     patterns = data.get("patterns")
