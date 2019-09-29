@@ -20,11 +20,12 @@ def bank():
     result = {}
     if reduced == 0:
         result['answer'] = length
-        return json.dumps(result)
     else:
         for i in range(length):
             reduced -= banks[i]
             print(reduced)
             if reduced < 1:
                 result['answer'] = i + 1
-                return json.dumps(result)
+
+    print(result)
+    return Response(json.dumps(result), mimetype='application/json')
