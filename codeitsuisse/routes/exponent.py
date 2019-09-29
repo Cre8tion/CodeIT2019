@@ -1,9 +1,7 @@
 import json, logging, math
-from decimal import *
 
 from flask import request, jsonify, Response
 from codeitsuisse import app
-
 
 
 @app.route('/exponent', methods=['POST'])
@@ -30,58 +28,51 @@ def exponent():
         length = 1
         ldigit = 1
     else:
-        length = int(p * math.log10(n) + 1)
-        #whole = math.floor(length)
-        #frac = length - whole
-        #print(length)
-        #print(frac)
+        length = math.ceil(p * math.log10(n))
         frac = (math.log10(n) * p) % 1
         fd = int(10 ** frac)
-        print(fd)
-        length = int(math.ceil(length))
-        print(length)
 
         num = str(n)
         ld = int(num[len(num)-1])
 
-        if(ld == 1):
-            ldigit = 1
-        elif(ld == 2):
-            remainder = p % 4
-            arr = [2,4,8,6]
-            ldigit = arr[remainder - 1]
-        elif(ld == 3):
-            remainder = p % 4
-            arr = [3,9,7,1]
-            ldigit = arr[remainder - 1]
-        elif(ld == 4):
-            remainder = p % 4
-            arr = [4,6,4,6]
-            ldigit = arr[remainder - 1]
-        elif(ld == 5):
-            ldigit = 5
-        elif(ld == 6):
-            ldigit = 6
-        elif(ld == 7):
-            remainder = p % 4
-            arr = [7,9,3,1]
-            ldigit = arr[remainder - 1]
-        elif(ld == 8):
-            remainder = p % 4
-            arr = [8,4,2,6]
-            ldigit = arr[remainder - 1]
-        elif(ld == 9):
-            remainder = p % 4
-            arr = [9,1,9,1]
-            ldigit = arr[remainder - 1]
-        elif(ld == 0):
-            ldigit = 0
-
-        print(ldigit) 
-
+        ldigit = last_digit(ld)
 
     lst = [fd, length, ldigit]
     result = {"result" : lst}
     logging.info("My result :{}".format(result))
     return Response(json.dumps(result), mimetype='application/json')
-           
+
+def last_digit(ld):
+    if(ld == 1):
+        ldigit = 1
+    elif(ld == 2):
+        remainder = p % 4
+        arr = [2,4,8,6]
+        ldigit = arr[remainder - 1]
+    elif(ld == 3):
+        remainder = p % 4
+        arr = [3,9,7,1]
+        ldigit = arr[remainder - 1]
+    elif(ld == 4):
+        remainder = p % 4
+        arr = [4,6,4,6]
+        ldigit = arr[remainder - 1]
+    elif(ld == 5):
+        ldigit = 5
+    elif(ld == 6):
+        ldigit = 6
+    elif(ld == 7):
+        remainder = p % 4
+        arr = [7,9,3,1]
+        ldigit = arr[remainder - 1]
+    elif(ld == 8):
+        remainder = p % 4
+        arr = [8,4,2,6]
+        ldigit = arr[remainder - 1]
+    elif(ld == 9):
+        remainder = p % 4
+        arr = [9,1,9,1]
+        ldigit = arr[remainder - 1]
+    elif(ld == 0):
+        ldigit = 0
+    return ldigit
