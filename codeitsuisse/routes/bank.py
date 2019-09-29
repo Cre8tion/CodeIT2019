@@ -1,6 +1,6 @@
 import json, logging
 
-from flask import request, jsonify
+from flask import request, jsonify, Response
 from codeitsuisse import app
 
 @app.route('/bankbranch', methods=['POST'])
