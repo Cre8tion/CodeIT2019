@@ -26,6 +26,7 @@ def bank():
             print(reduced)
             if reduced < 1:
                 result['answer'] = i + 1
+                break
 
     print(result)
     return Response(json.dumps(result), mimetype='application/json')
