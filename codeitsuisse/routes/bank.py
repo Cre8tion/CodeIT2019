@@ -1,4 +1,4 @@
-import json, logging
+import json, logging, math, functools
 
 from flask import request, jsonify, Response
 from codeitsuisse import app
@@ -10,23 +10,22 @@ def bank():
 
     n = data['N']
     banks = data['branch_officers_timings']
-    length = len(banks)
-    total = 0
+    lcm = banks[0]
+    servedPerRound = []
+    
+    for i in banks[1:]:
+        lcm = lcm*i/math.gcd(lcm, i)
+    for j in banks:
+        servedPerRound.append(lcm // banks)
+    
+    totalPerRound = functools.reduce(lambda x, y: x + y, servedPerRound)
+    reduced = n % totalPerRound
 
-    for i in banks:
-        total += i
-    print("toatl {}".format(total))
-    reduced = n % total
     result = {}
     if reduced == 0:
-        result['answer'] = length
+        result["answer"] = 1
     else:
-        for i in range(length):
-            reduced -= banks[i]
-            print(reduced)
-            if reduced < 1:
-                result['answer'] = i + 1
-                break
+        
 
     print(result)
     return Response(json.dumps(result), mimetype='application/json')
