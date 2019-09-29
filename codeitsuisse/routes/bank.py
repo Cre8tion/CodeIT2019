@@ -1,4 +1,5 @@
 import json, logging, math, functools
+from math import gcd
 
 from flask import request, jsonify, Response
 from codeitsuisse import app
@@ -10,22 +11,19 @@ def bank():
 
     n = data['N']
     banks = data['branch_officers_timings']
-    lcm = banks[0]
-    servedPerRound = []
-    
-    for i in banks[1:]:
-        lcm = lcm*i/math.gcd(lcm, i)
-    for j in banks:
-        servedPerRound.append(lcm // banks)
-    
-    totalPerRound = functools.reduce(lambda x, y: x + y, servedPerRound)
-    reduced = n % totalPerRound
-
-    result = {}
-    if reduced == 0:
-        result["answer"] = 1
+    Lcm = banks[0]
+    for i in range(1,len(banks)):
+        Lcm = getLCM(Lcm,banks[i])
+    remainder = n % Lcm
+    if(remainder < len(banks)):
+        answer = remainder + 1
     else:
+        answer = 0
+    
         
 
-    print(result)
+    result = {"answer":answer}
     return Response(json.dumps(result), mimetype='application/json')
+
+def getLCM(a, b):
+    return a * b // gcd(a, b)
